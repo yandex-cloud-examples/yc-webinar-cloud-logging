@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /{path+}:
+    x-yc-apigateway-any-method:
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+      x-yc-apigateway-integration:
+        type: serverless_containers
+        container_id: <ID сервис контейнера>
+        service_account_id: <ID сервисного аккаунта>      
