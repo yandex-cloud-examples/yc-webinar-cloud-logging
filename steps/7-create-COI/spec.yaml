@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  myapp:
+    container_name: myapp
+    image: URL_IMAGE
+    restart: always
+    environment:
+      - PORT=80
+      - LOG_LEVEL=debug
+    ports: 
+      - "80:80"
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: app.logs
+
+  fluentbit:
+    container_name: fluentbit
+    image: cr.yandex/yc/fluent-bit-plugin-yandex:v1.0.3-fluent-bit-1.8.6
+    ports:
+      - 24224:24224
+      - 24224:24224/udp
+    restart: always
+    environment:
+      YC_GROUP_ID: <ID>
+    volumes:
+      - /etc/fluentbit/fluentbit.conf:/fluent-bit/etc/fluent-bit.conf
+      - /etc/fluentbit/parsers.conf:/fluent-bit/etc/parsers.conf
