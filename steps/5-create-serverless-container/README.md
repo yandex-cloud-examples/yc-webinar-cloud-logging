@@ -8,12 +8,12 @@
     yc serverless container create --name $SERVERLESS_CONTAINER_NAME
     yc container image list
 
-Составим `URL_Docker-образа`. Возьмем наименование реджестри `cr.yandex`. Добавим значение `NAME` из выведеного ранее списка контенеров, оно будет вида `crp8ei5vkhh11pc7pd8h/logging-server`. Добавим значение `TAGS`, скорее всего оно будет равно `latest`. Получившаяся строка вида `cr.yandex/crp8ei5vkhh11pc7pd8h/logging-server:latest` будет вашим URL (ранее мы уже использовали такой URL).
+Составим `URL_Docker-образа`. Возьмем наименование реджестри `cr.yandex`. Добавим значение `NAME` из выведенного ранее списка контейнеров, оно будет иметь вид `crp8ei5vkhh11pc7pd8h/logging-server`. Добавим значение `TAGS`, скорее всего, оно будет равно `latest`. Получившаяся строка вида `cr.yandex/crp8ei5vkhh11pc7pd8h/logging-server:latest` будет вашим URL (ранее мы уже использовали такой URL).
 
     echo "export URL_IMAGE=YOUR_URL_IMAGE" >> ~/.bashrc && . ~/.bashrc
     echo $URL_IMAGE
 
-Выполним deploy нашего контейнера:
+Развернём наш контейнер:
 
     yc serverless container revision deploy \
     --container-name $SERVERLESS_CONTAINER_NAME \
@@ -25,7 +25,7 @@
     --service-account-id $SERVICE_ACCOUNT_ID \
     --environment LOG_LEVEL=debug
 
-Проверим список `Serverless Container` и запишем ID созданного контейнера, это нам понадобиться при создании `Yandex API Gateway`.
+Проверим список `Serverless Container` и запишем ID созданного контейнера (он нам понадобится при создании `Yandex API Gateway`).
 
     yc serverless container list
 

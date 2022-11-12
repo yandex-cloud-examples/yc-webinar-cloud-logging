@@ -13,14 +13,14 @@
     yc iam service-account list
     echo $SERVICE_ACCOUNT
 
-После проверки запишите ID, созданного сервисного аккаунта, в переменную `SERVICE_ACCOUNT_ID`:
+После проверки запишите ID созданного сервисного аккаунта в переменную `SERVICE_ACCOUNT_ID`:
 
     echo "export SERVICE_ACCOUNT_ID=<ID>" >> ~/.bashrc && . ~/.bashrc 
     echo $SERVICE_ACCOUNT_ID
 
 ## Назначение роли сервисному аккаунту
 
-Добавим вновь созданному сервисному аккаунту необходимые роли `logging.writer`, `container-registry.images.puller`, `serverless.functions.invoker`, `serverless.containers.invoker`: 
+Добавим созданному сервисному аккаунту роли `logging.writer`, `container-registry.images.puller`, `serverless.functions.invoker`, `serverless.containers.invoker`:
 
     echo "export FOLDER_ID=$(yc config get folder-id)" >> ~/.bashrc && . ~/.bashrc
     echo $FOLDER_ID

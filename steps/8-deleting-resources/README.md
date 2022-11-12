@@ -8,13 +8,13 @@
     yc serverless container delete --name=logging-server
     yc logging group delete --name=yc-logging
 
-Удалите doker-образ и репозиторий:
+Удалите Doker-образ и репозиторий:
 
     yc container image list
     yc container image delete --id=<ID>
     yc container registry delete --name=for-logging-server
 
-Удалите экземпляр функцию и api-gateway:
+Удалите экземпляр функцию и API-Gateway:
 
     yc serverless api-gateway list
     yc serverless api-gateway delete --name=logging-server-apigw
@@ -22,7 +22,7 @@
     yc serverless function list
     yc serverless function delete --name=function-for-cloud-logging
 
-Если вы создавали отдельную сеть с подсетями, то сначала удалите все подсети и потом сеть:
+Если вы создавали отдельную сеть с подсетями, то сначала удалите все подсети, а потом сеть:
 
     yc vpc subnet list
     yc vpc subnet delete --name=<NAME>
